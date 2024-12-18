@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TextField from '@mui/material/TextField';
 
-export default function AddTaskForm({data,setdata}){
+export default function AddTaskForm({setdata}){
     let [newtask,setnewtask]=useState("");
     let handleChange =(event)=>{
         setnewtask(event.target.value);
@@ -11,7 +11,7 @@ export default function AddTaskForm({data,setdata}){
     }
     let handleClick=(event)=>{
         if(newtask== "" )return;
-        setdata((curr)=> [...curr,newtask]);
+        setdata((curr)=> [...curr,{task:newtask,isdone:false,id:uuidv4()}]);
         setnewtask("");
     }
     return(
